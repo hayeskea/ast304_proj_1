@@ -1,5 +1,5 @@
 ########################################################################
-# Team <your team name>: <names>
+# Team <your team name>: <names># Team Gorilla Flip-Flops: Keara Hayes, Atticus Chong, Evelyn Fuhrman, Zachary Malzahn
 # AST304, Fall 2020
 # Michigan State University
 ########################################################################
