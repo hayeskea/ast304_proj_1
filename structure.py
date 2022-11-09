@@ -138,8 +138,8 @@ def integrate(Pc,delta_m,eta,xi,mue,max_steps=10000):
         # increment the counter
         Nsteps += 1
     # if the loop runs to max_steps, then signal an error
-        else:
-            raise Exception('too many iterations')
+    else:
+        raise Exception('too many iterations')
         
     return m_step[0:Nsteps],r_step[0:Nsteps],p_step[0:Nsteps]
 
