@@ -75,8 +75,14 @@ def lengthscales(m,z,mue):
     """
 
     # fill this in
-    pass
-    return
+    # pass
+    G = 6.6743e-11 # gravitational constant in m^3 kg^-1 s^-2
+    radius = z[0]
+    pressure = z[1]
+    rho = density(pressure, mue)
+    H_r = 4 * np.pi * (radius**3) * rho
+    H_p = (4 * np.pi * (radius**4) * pressure) / (G * m) 
+    return H_r, H_p
     
 def integrate(Pc,delta_m,eta,xi,mue,max_steps=10000):
     """
@@ -106,9 +112,10 @@ def integrate(Pc,delta_m,eta,xi,mue,max_steps=10000):
     m_step = np.zeros(max_steps)
     r_step = np.zeros(max_steps)
     p_step = np.zeros(max_steps)
-    
+  
     # set starting conditions using central values
-    
+    z = central_values(Pc, delta_m, mue)
+    some_fraction = 0.1
     Nsteps = 0
     for step in range(max_steps):
         radius = z[0]
@@ -117,16 +124,22 @@ def integrate(Pc,delta_m,eta,xi,mue,max_steps=10000):
         if (pressure < eta*Pc):
             break
         # store the step
+        m_step[Nsteps] = m_step[Nsteps-1] + delta_m
+        r_step[Nsteps] = radius
+        p_step[Nsteps] = pressure
         
         # set the stepsize
-        
+        H_r, H_p = lengthscales(m_step[Nsteps], z, mue)
+        h = some_fraction * min(H_r, H_p)
+
         # take a step
+        
         
         # increment the counter
         Nsteps += 1
     # if the loop runs to max_steps, then signal an error
-    else:
-        raise Exception('too many iterations')
+        else:
+            raise Exception('too many iterations')
         
     return m_step[0:Nsteps],r_step[0:Nsteps],p_step[0:Nsteps]
 
