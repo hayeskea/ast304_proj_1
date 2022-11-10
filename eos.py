@@ -9,7 +9,6 @@
 """
 
 import astro_const as ac
-import numpy as np
 
 def pressure(rho, mue):
     """
@@ -24,8 +23,10 @@ def pressure(rho, mue):
     """
     
     # replace following lines with body of routine
-    p = (1/5) * ((3/(2*ac.fourpi))**(2/3)) * ((ac.h**2)/ac.m_e) * ((rho/(mue * ac.m_u))**(5/3)) # electron degeneracy pressure in Pa
-
+    m_u = 1.661e-27 # atomic mass unit in kg
+    h = 6.62607015e-34 # Planck's constant -- m^2 * kg/s
+    m_e = 9.1093837015e-31 # mass of an electron in kg
+    p = (1/5) * ((3/(8*np.pi))**(2/3)) * ((h**2)/m_e) * ((rho/(mue * m_u))**(5/3)) # electron degeneracy pressure in Pa
     return p
 
 # def density(p, mue):
@@ -66,10 +67,5 @@ def density(p, mue):
     """
     
     # replace following lines with body of routine
-<<<<<<< HEAD
-    rho = (p*(1/5 * (3/(2*ac.fourpi))**(2/3) * ac.h**2/ac.m_e)**-1)**(3/5) * mue * ac.m_u
-    return rho
-=======
     rho = ((p*((1/5)*((3/8*pi)**2/3)*(h**2/(2*me)))**-1)**(3/5))*mu*mue
     return rho
->>>>>>> 3225f70276d0d0b9f051fdea6eac8ca8800654e4
