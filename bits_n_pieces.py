@@ -36,7 +36,7 @@ sigmaSB = _ac.sigma_sb.value
 
 # other constants
 mue = 2
-K_e = ((1/5)*((3/(8*pi))**(2/3))*(h**2/(m_e*(mue*m_u)**(5/3))))
+K = ((1/5)*((3/(8*pi))**(2/3))*(h**2/(m_e*(mue*m_u)**(5/3))))
 
 ### rk4 routine from Project 1
 def rk4(f,t,z,h,args=()):
@@ -86,7 +86,7 @@ def pressure(rho, mue):
         electron degeneracy pressure (Pascal)
     """
 
-    p = (1/5)*(3/(8*np.pi))**(2/3)*(h**2/m_e)*(rho/(mue*m_u))**(5/3)
+    p = K*(rho)**(5/3)
     return p
 
 def density(p, mue):
