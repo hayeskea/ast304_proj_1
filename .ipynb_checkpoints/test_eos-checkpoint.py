@@ -11,6 +11,7 @@ def test_chem():
 def test_adiabat():
     rhoc = 1.0e4
     Tc = 1.0e7
+    eos_const=4.0
     Pc = eos_const*rhoc*Tc
     Ptest = Pc/10
     gamma = 5/3
