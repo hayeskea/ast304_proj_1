@@ -108,5 +108,5 @@ def density(p, mue):
     """
     
     
-    rho = mue*m_u*(5*p*(m_e/h**2)*(3/(8*np.pi))**(-2/3))**(3/5)
+    rho = (p/K)**(3/5)
     return rho
